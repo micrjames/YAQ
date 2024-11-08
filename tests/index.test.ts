@@ -71,4 +71,59 @@ describe("An array-like Queue of data", () => {
 		 });	
 	  });
    });
+   describe("That is iterable", () => {
+	  describe("Gives each value of the Queue.", () => {
+		 let q: YAQ<number>;
+		 let enQValues: number[];
+		 beforeAll(() => {
+			q = new YAQ();
+			enQValues = [1, 2, 3, 4, 5];
+			enQValues.forEach(enQValue => {
+			   q.enqueue(enQValue);
+			});
+		 });
+		 test("Should be 0.", () => {
+			const nextEl = q.next();
+			const nextElDone = nextEl.done;
+			const nextElValue = nextEl.value;
+			expect(nextElDone).toBeFalsy();
+			expect(nextElValue).toBe(enQValues[0]);
+		 });
+		 test("Should be 1.", () => {
+			const nextEl = q.next();
+			const nextElDone = nextEl.done;
+			const nextElValue = nextEl.value;
+			expect(nextElDone).toBeFalsy();
+			expect(nextElValue).toBe(enQValues[1]);
+		 });
+		 test("Should be 2.", () => {
+			const nextEl = q.next();
+			const nextElDone = nextEl.done;
+			const nextElValue = nextEl.value;
+			expect(nextElDone).toBeFalsy();
+			expect(nextElValue).toBe(enQValues[2]);
+		 });
+		 test("Should be 3.", () => {
+			const nextEl = q.next();
+			const nextElDone = nextEl.done;
+			const nextElValue = nextEl.value;
+			expect(nextElDone).toBeFalsy();
+			expect(nextElValue).toBe(enQValues[3]);
+		 });
+		 test("Should be 4.", () => {
+			const nextEl = q.next();
+			const nextElDone = nextEl.done;
+			const nextElValue = nextEl.value;
+			expect(nextElDone).toBeFalsy();
+			expect(nextElValue).toBe(enQValues[4]);
+		 });
+		 test("Should be 'null'", () => {
+			const nextEl = q.next();
+			const nextElDone = nextEl.done;
+			const nextElValue = nextEl.value;
+			expect(nextElDone).toBeTruthy();
+			expect(nextElValue).toBeNull();
+		 });
+	  });
+   });
 });

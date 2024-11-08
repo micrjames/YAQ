@@ -23,8 +23,7 @@ export class YAQ<T> implements IterableIterator<dataObj<T>> {
 	   const idxs = [...new Range(this._size)];
 	   let value: T;
 	   idxs.forEach(idx => {
-		  value = this.data[idx+1];
-		  this.data[idx] = value;
+		  this.data[idx] = this.data[idx+1];
 	   });
 	   this._size--;
 	   delete this.data[this._size];
@@ -44,10 +43,16 @@ export class YAQ<T> implements IterableIterator<dataObj<T>> {
    }
 
    next(): IteratorResult<dataObj<T>> {
-	  return {
-		 done: true,
-		 value: null
-	  };
+	  if(this.idx < this._size)
+		 return {
+			done: false,
+			value: this.data[this.idx++] as any
+		 }
+	  else
+		 return {
+			done: true,
+			value: null
+		 };
    }
 
    [Symbol.iterator](): IterableIterator<dataObj<T>> {
