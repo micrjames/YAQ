@@ -39,9 +39,19 @@ describe("An array-like Queue of data", () => {
 			q.enqueue(enQValue);
 			qSize++;
 		 });
-		 test.todo("Should not be empty.");
-		 test.todo("Should retrieve the element that was 'enqueue'd");
-		 test.todo("Should be of a size of one element.");
+		 test("Should not be empty.", () => {
+			const isEmpty = q.is_empty;
+			expect(isEmpty).not.toBeTruthy();
+		 });
+		 test("Should retrieve the element that was 'enqueue'd", () => {
+			const data = q.front();
+			console.log(`Initial enqueue: ${q.toString()}`);
+			expect(data).toBe(enQValue);
+		 });
+		 test("Should be of a size of one element.", () => {
+			const size = q.size;
+			expect(size).toBe(qSize);
+		 });
 	  });
    });
 });

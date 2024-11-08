@@ -1,5 +1,7 @@
 import { dataObj } from "./utils/utils";
 import { StringBuilder } from "./StringBuilder/StringBuilder";
+import { Range } from "./Range/range";
+
 
 export class YAQ<T> implements IterableIterator<dataObj<T>> {
    protected data: dataObj<T>;
@@ -17,6 +19,15 @@ export class YAQ<T> implements IterableIterator<dataObj<T>> {
    }
 
    dequeue() {
+	   if(this.is_empty) return;
+	   const idxs = [...new Range(this._size)];
+	   let value: T;
+	   idxs.forEach(idx => {
+		  value = this.data[idx+1];
+		  this.data[idx] = value;
+	   });
+	   this._size--;
+	   delete this.data[this._size];
    }
 
    front(): T | null {
