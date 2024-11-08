@@ -1,4 +1,5 @@
 import { YAQ } from "../YAQ";
+import { dataObj } from "../utils/utils";
 
 describe("An array-like Queue of data", () => {
    console.log("A Queue of numbers:");
@@ -123,6 +124,40 @@ describe("An array-like Queue of data", () => {
 			const nextElValue = nextEl.value;
 			expect(nextElDone).toBeTruthy();
 			expect(nextElValue).toBeNull();
+		 });
+	  });
+	  describe("Gives the values as an array.", () => {
+		 let q: YAQ<number>;
+		 let enQValues: number[];
+		 let qArr: dataObj<number>[];
+		 beforeAll(() => {
+			q = new YAQ();
+			enQValues = [1, 2, 3, 4, 5];
+			enQValues.forEach(enQValue => {
+			   q.enqueue(enQValue);
+			});
+
+			qArr = [...q];
+		 });
+		 test("Should not be empty.", () => {
+			expect(qArr).not.toBeFalsy();
+		 });
+		 test("Should contain 5 elements.", () => {
+			const qArrSize = enQValues.length;
+			expect(qArr).toHaveLength(qArrSize);
+		 });
+		 test("Should equal '[1, 2, 3, 4, 5]'.", () => {
+			expect(qArr).toEqual(enQValues);
+		 });
+		 test("Should iterate the elements.", () => {
+			qArr.forEach((el, idx) => {
+			   expect(el).toBe(idx + 1);
+			});
+			let idx = 0;
+			for(const el of qArr) {
+			   ++idx;
+			   expect(el).toBe(idx);
+			}
 		 });
 	  });
    });
