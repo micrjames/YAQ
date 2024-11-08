@@ -8,9 +8,17 @@ describe("An array-like Queue of data", () => {
 		 q = new YAQ();
 		 console.log(`${q.toString()}`);
 	  });
-	  test.todo("Should exist.");
-	  test.todo("Should be empty.");
-	  test.todo("Should not give an item.");
+	  test("Should exist.", () => {
+		 expect(q).toBeDefined();
+	  });
+	  test("Should be empty.", () => {
+		 const isEmpty = q.is_empty;
+		 expect(isEmpty).toBeTruthy();
+	  });
+	  test("Should not give an item.", () => {
+		 const data = q.front();
+		 expect(data).toBeNull();
+	  });
    });
    describe("Basic operations", () => {
 	  let q: YAQ<number>;

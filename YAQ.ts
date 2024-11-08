@@ -12,12 +12,16 @@ export class YAQ<T> implements IterableIterator<dataObj<T>> {
    }
 
    enqueue(element: T) {
+	  this.data[this._size] = element;
+	  this._size++;
    }
 
    dequeue() {
    }
 
-   front() {
+   front(): T | null {
+	  if(this.is_empty) return null;
+	  return this.data[0];
    }
 
    get size(): number {
