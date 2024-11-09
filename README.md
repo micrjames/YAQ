@@ -12,14 +12,17 @@ Yet another implementation of a Queue data structure.
 * [Contact](#contact)
 
 ## General Info
-I wrote this as part of working through implementing data structures. I decided not to use an array as the basic container for the data to be held in a Queue. As JavaScript/Typescript is so object-centric these days, especially since es6, I decided to create an array-like object with an iterator and implement a Queue using that as the data container.
+I wrote this as part of working through implementing data structures. I decided not to use an array as the basic container for the data to be held in the Queue. As JavaScript/Typescript is so object-centric these days, especially since es6, I decided to create an array-like object with an iterator and implement a Queue using that as the data container.
 
 ## Technologies Used
 I'm only using plain, vanilla Typescript with no libraries or other packages.
 
 ## Features
 * An object with an iterator that functions as the container to hold data.
-
+* Add an element to the beginning of the *Queue*.
+* Remove an element from the beginning of the *Queue*.
+* Read the *front* element of the *Queue*.
+* Get the *size* of the *Queue*.
 ## Setup
 Just import the YAQ class into your project.
 

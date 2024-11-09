@@ -21,7 +21,6 @@ export class YAQ<T> implements IterableIterator<dataObj<T>> {
    dequeue() {
 	   if(this.is_empty) return;
 	   const idxs = [...new Range(this._size)];
-	   let value: T;
 	   idxs.forEach(idx => {
 		  this.data[idx] = this.data[idx+1];
 	   });
