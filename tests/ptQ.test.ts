@@ -52,19 +52,19 @@ describe("An array-like Queue of data", () => {
 		 });
 	  });
 	  describe("dequeue", () => {
-		 let qValue: Point;
+		 let dequeuedValue: Point;
 		 let data: Point;
 		 beforeAll(() => {
-			qValue = q.front();
-			q.dequeue();
-			qSize--;
 		 	data = q.front();
+			dequeuedValue = q.dequeue();
+			qSize--;
 		 });
 		 test("Should remove the element at the front of the queue.", () => {
-			console.log(`Dequeue'd value ${qValue} at 0th index gives queue: ${q.toString()}.`);
-			expect(data).not.toBe(qValue);
+			console.log(`Dequeue'd value ${dequeuedValue} at 0th index gives queue: ${q.toString()}.`);
+			expect(data).toBe(dequeuedValue);
 		 });
 		 test("Should be an empty queue.", () => {
+		 	data = q.front();
 			expect(data).toBeNull();
 		 });
 		 test("Should have a size of 0.", () => {

@@ -18,14 +18,16 @@ export class YAQ<T> implements IterableIterator<dataObj<T>> {
 	  this._size++;
    }
 
-   dequeue() {
-	   if(this.is_empty) return;
+   dequeue(): T | null {
+	   if(this.is_empty) return null;
+	   const front_element = this.data[0];
 	   const idxs = [...new Range(this._size)];
 	   idxs.forEach(idx => {
 		  this.data[idx] = this.data[idx+1];
 	   });
 	   this._size--;
 	   delete this.data[this._size];
+	   return front_element;
    }
 
    front(): T | null {
